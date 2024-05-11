@@ -1,0 +1,140 @@
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #444444;
+  margin: 0;
+}
+
+.header {
+  background-color: #9564DA;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.back-icon img {
+  width: 30px;
+  height: 30px;
+}
+
+.back-icon img:hover {
+  width: 30px;
+  height: 30px;
+  opacity: 80%;
+}
+
+.title {
+  flex: 1;
+  text-align: center;
+}
+
+.title h1 {
+  font-size: 30px;
+}
+
+.container {
+  max-width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.question {
+  margin-bottom: 20px;
+}
+
+.question h2 {
+  font-size: 28;
+  color: #522F65;
+  font-weight: bold;
+  margin-top: 50px;
+}
+
+.question p {
+  font-size: 18px;
+  color: #000;
+  margin-bottom: 40px;
+}
+
+.options {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.options label {
+  display: block;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #f2f2f2;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  margin: 0 50px;
+}
+
+.options label:hover {
+  transform: scale(1.1);
+}
+
+.options label img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  opacity: 0.65;
+  transition: filter 0.3s ease-in-out;
+}
+
+.options label img:hover {
+  opacity: 100%;
+  transition: filter 0.3s ease-in-out;
+}
+
+.options label span {
+  font-size: 14px;
+  transition: filter 0.3s ease-in-out;
+  font-weight: 600;
+}
+
+.options input[type="radio"] {
+  display: none;
+}
+
+.options input[type="radio"]:checked + img {
+  opacity: 100%;
+}
+
+.submit {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: right; 
+}
+
+.submit button {
+  padding: 15px 50px;
+  background-color: #522F65;
+  color: white;
+  border: none;
+  border-radius: 50px; /* Untuk membuat rounded-border */
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  font-size: 16px;
+}
+
+.submit button:hover {
+  background-color: #9564DA;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  font-size: 16px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.473);
+}
