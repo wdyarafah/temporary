@@ -25,7 +25,7 @@
     width: 200%;
   }
   .wrapper .title-text img{
-    width: 150px;
+    width: 88px;
     height: 88px;
   }
   .wrapper .title{
@@ -139,12 +139,11 @@
     text-align: center;
     margin-top: 30px;
   }
-  .form-inner form .pass-link a,
+  .form-inner form .pass-link,
   .form-inner form .signup-link a{
     color: #522F65;
     text-decoration: none;
   }
-  .form-inner form .pass-link a:hover,
   .form-inner form .signup-link a:hover{
     text-decoration: underline;
   }
