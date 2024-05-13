@@ -25,7 +25,7 @@
     width: 200%;
   }
   .wrapper .title-text img{
-    width: 88px;
+    width: 80px;
     height: 88px;
   }
   .wrapper .title{
@@ -111,7 +111,8 @@
     width: 100%;
     margin-top: 20px;
   }
-  .form-inner form .field input{
+  .form-inner form .field input,
+  .form-inner form .field select{
     height: 100%;
     width: 100%;
     outline: none;
@@ -122,14 +123,17 @@
     font-size: 17px;
     transition: all 0.3s ease;
   }
-  .form-inner form .field input:focus{
+  .form-inner form .field input:focus,
+  .form-inner form .field select:focus{
     border-color: #522F65;
   }
-  .form-inner form .field input::placeholder{
+  .form-inner form .field input::placeholder,
+  .form-inner form .field select::placeholder{
     color: #7b7b7b;
     transition: all 0.3s ease;
   }
-  form .field input:focus::placeholder{
+  form .field input:focus::placeholder,
+  form .field select:focus::placeholder{
     color: #7b7b7b;
   }
   .form-inner form .pass-link{
