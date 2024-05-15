@@ -2,9 +2,14 @@ body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .header {
+  width: 100%;
   background-color: #9564DA;
   color: white;
   padding: 20px 0;
@@ -13,95 +18,99 @@ body {
 
 .header-content {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  max-width: 80%;
+  justify-content: space-between;
+  width: 70%;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-.back-icon img {
+.header .back-icon img {
   width: 30px;
-  height: 30px;
+  cursor: pointer;
 }
 
-.back-icon img:hover {
-  width: 30px;
-  height: 30px;
+.header .back-icon img:hover {
   opacity: 80%;
 }
 
-.title {
-  flex: 1;
-  text-align: center;
-}
-
-.title h1 {
+.header .title h1  {
+  margin: 0 187px;
   font-size: 30px;
+}
+.header .title p  {
+  margin: 0 187px;
+  font-size: 16px;
 }
 
 .container {
-  max-width: 80%;
-  margin: 0 auto;
+  border-radius: 10px;
+  padding: 0;
   text-align: center;
+  width: 90%;
+  max-width: 70%;
+  margin-top: 30px;
+  overflow: hidden;
 }
 
 .question {
+  border-radius: 10px;
+  background-color: #E4D1FF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-bottom: 30px;
+}
+
+.statement {
+  background-color: #9564DA;
+  border-radius: 10px;
+  color: white;
+  padding: 15px;
+  font-size: 16px;
   margin-bottom: 20px;
-}
-
-.question h2 {
-  font-size: 28;
-  color: #522F65;
-  font-weight: bold;
-  margin-top: 50px;
-}
-
-.question p {
-  font-size: 18px;
-  color: #000;
-  margin-bottom: 40px;
 }
 
 .options {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 20px;
+  padding: 20px;
 }
 
 .options label {
-  display: block;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background-color: #f2f2f2;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  border: 2px solid #9564DA;
+  border-radius: 10px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  padding: 10px 20px;
+  width: 350px;
   transition: transform 0.3s ease-in-out;
-  margin: 0 50px;
+  position: relative;
+  text-align: left;
+  opacity: 0.80;
 }
 
 .options label:hover {
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
 .options label img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-  opacity: 0.65;
-  transition: filter 0.3s ease-in-out;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
 }
 
-.options label img:hover {
+.options label:hover {
   opacity: 100%;
   transition: filter 0.3s ease-in-out;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.466);
+  background-color: #9564DA;
 }
 
 .options label span {
   font-size: 14px;
-  transition: filter 0.3s ease-in-out;
   font-weight: 600;
 }
 
@@ -109,32 +118,48 @@ body {
   display: none;
 }
 
-.options input[type="radio"]:checked + img {
+.options input[type="radio"]:checked + label {
   opacity: 100%;
-}
-
-.submit {
-  margin-top: 50px;
-  margin-bottom: 50px;
-  text-align: right; 
-}
-
-.submit button {
-  padding: 15px 50px;
-  background-color: #522F65;
-  color: white;
-  border: none;
-  border-radius: 50px; /* Untuk membuat rounded-border */
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-  font-size: 16px;
-}
-
-.submit button:hover {
   background-color: #9564DA;
   color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-  font-size: 16px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.473);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.466);
+}
+
+/* Media Query for Tablets */
+@media (max-width: 2051px) {
+  .options label {
+    width: 450px;
+  }
+}
+
+/* Media Query for Tablets */
+@media (min-width: 769px) and (max-width: 1371px) {
+  .header .title h1 {
+    font-size: 25px;
+  }
+  .header .title p {
+    font-size: 13px;
+  }
+  .statement {
+    font-size: 14px; /* Mengatur font-size statement untuk tablet */
+  }
+  .options label {
+    width: 250px;
+  }
+}
+
+/* Media Query for Small Screens (Mobile Devices) */
+@media (max-width: 768px) {
+  .header .title h1 {
+    font-size: 20px; /* Mengatur font-size title h1 pada header untuk layar kecil */
+  }
+  .header .title p {
+    font-size: 11px; /* Mengatur font-size title p pada header untuk layar kecil */
+  }
+  .statement {
+    font-size: 12px; /* Mengatur font-size statement untuk layar kecil */
+  }
+  .options label {
+    width: 250px; /* Mengatur width label untuk layar kecil */
+  }
 }

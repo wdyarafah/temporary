@@ -1,3 +1,44 @@
+<?php
+// Start session
+session_start();
+
+// Handle logout
+if (isset($_GET["logout"]) && $_GET["logout"] == "true") {
+    // Destroy the session
+    session_destroy();
+    // Redirect back to the index page after logout
+    header("location: index.php");
+    exit;
+}
+
+// Include database connection
+include "koneksi.php";
+
+// Process input data
+if (isset($_POST['Input'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $subject = $_POST['subject'];
+    $message = $_POST['message'];
+
+    // Insert into table
+    $query = "INSERT INTO inbox (name, email, subject, message)
+              VALUES ('$name', '$email', '$subject', '$message')";
+    $sql = mysqli_query($conn, $query);
+
+    if ($sql) {
+        echo "<script language=\"javascript\">
+              alert(\"Laporan kamu berhasil terkirim!!\");
+              document.location=\"index.php\";
+              </script>";
+    } else {
+        echo "<script language=\"javascript\">
+              alert(\"Laporan kamu gagal terkirim!!\");
+              document.location=\"index.php\";
+              </script>";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +51,6 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/Logo.png" rel="icon">
   <link rel="icon" href="assets/img/Logo.png">
 
   <!-- Google Fonts -->
@@ -39,16 +79,23 @@
       <h1 class="logo"><a href="index.html"><img src="assets/img/Logo.png" alt="" class="img-fluid">TEMPORARY</a></h1>
 
       <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#definisi">Definisi</a></li>
-          <li><a class="nav-link scrollto" href="#jenis">Jenis</a></li>
-          <li><a class="nav-link scrollto" href="#bentuk">Bentuk</a></li>
-          <li><a class="nav-link scrollto o" href="#dampak">Dampak</a></li>
-          <li><a class="login scrollto" href="login.html">Login</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+      <ul>
+          <li><a class="nav-link" href="#">Home</a></li>
+          <li><a class="nav-link" href="#definisi">Definisi</a></li>
+          <li><a class="nav-link" href="#jenis">Jenis</a></li>
+          <li><a class="nav-link" href="#bentuk">Bentuk</a></li>
+          <li><a class="nav-link" href="#dampak">Dampak</a></li>
+          <li><a class="nav-link" href="#contact">Kontak Kami</a></li>
+          <!-- Display login button -->
+          <?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true): ?>
+            <li><a class="login scrollto" href="index.php?logout=true">Logout</a></li>
+          <?php else: ?>
+            <li><a class="login scrollto" href="login.php">Login</a></li>
+          <?php endif; ?>
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav>
+    <!-- .navbar -->
 
     </div>
   </header>
@@ -136,7 +183,7 @@
         <div class="row bentuk-container" data-aos="fade-up" data-aos-delay="300">
           <div class="col-lg-4 col-md-6 bentuk-item">
             <div class="bentuk-wrap">
-              <img src="assets/img/contoh/menatap.jpeg" class="img-fluid" alt="">
+              <img src="assets/img/contoh/menatap.png" class="img-fluid" alt="">
               <div class="bentuk-info">
                 <p>Menatap korban dengan nuansa seksual.</p>
               </div>
@@ -145,7 +192,7 @@
     
           <div class="col-lg-4 col-md-6 bentuk-item">
             <div class="bentuk-wrap">
-              <img src="assets/img/contoh/penawaran.jpeg" class="img-fluid" alt="">
+              <img src="assets/img/contoh/transaksi.png" class="img-fluid" alt="">
               <div class="bentuk-info">
                 <p>Memaksa korban untuk melakukan transaksi atau kegiatan seksual.</p>
               </div>
@@ -154,7 +201,7 @@
     
           <div class="col-lg-4 col-md-6 bentuk-item">
             <div class="bentuk-wrap">
-              <img src="assets/img/contoh/catcalling.jpeg" class="img-fluid" alt="">
+              <img src="assets/img/contoh/catcalling.png" class="img-fluid" alt="">
               <div class="bentuk-info">
                 <p>Menyampaikan rayuan, lelucon, atau siulan yang bernuansa seksual pada korban.</p>
               </div>
@@ -163,16 +210,43 @@
     
           <div class="col-lg-4 col-md-6 bentuk-item">
             <div class="bentuk-wrap">
-              <img src="assets/img/contoh/kirim-pesan.jpeg" class="img-fluid" alt="">
+              <img src="assets/img/contoh/memaksa.png" class="img-fluid" alt="">
               <div class="bentuk-info">
-                <p>Mengirim pesan dan konten bernuansa seksual kepada korban tanpa persetujuan.</p>
+                <p>Memaksakan orang untuk melakukan aktivitas seksual atau melakukan percobaan pemerkosaan.</p>
               </div>
             </div>
           </div>
     
           <div class="col-lg-4 col-md-6 bentuk-item">
             <div class="bentuk-wrap">
-              <img src="assets/img/contoh/menyentuh.jpeg" class="img-fluid" alt="">
+              <img src="assets/img/contoh/Membuka_pakaian_tanpa_izin.png" class="img-fluid" alt="">
+              <div class="bentuk-info">
+                <p>Memperlihatkan alat kelamin dengan sengaja tanpa persetujuan.</p>
+              </div>
+            </div>
+          </div>
+    
+          <div class="col-lg-4 col-md-6 bentuk-item">
+            <div class="bentuk-wrap">
+              <img src="assets/img/contoh/mengintip.jpg" class="img-fluid" alt="">
+              <div class="bentuk-info">
+                <p>Mengintip atau dengan sengaja melihat korban yang sedang melakukan aktivitas pribadi atau pada ruang yang bersifat pribadi.</p>
+              </div>
+            </div>
+          </div>
+    
+          <div class="col-lg-4 col-md-6 bentuk-item">
+            <div class="bentuk-wrap">
+              <img src="assets/img/contoh/sanksi_paksaan.png" class="img-fluid" alt="">
+              <div class="bentuk-info">
+                <p>Memberi hukuman atau sanksi yang bernuansa seksual.</p>
+              </div>
+            </div>
+          </div>
+    
+          <div class="col-lg-4 col-md-6 bentuk-item">
+            <div class="bentuk-wrap">
+              <img src="assets/img/contoh/menyentuh.png" class="img-fluid" alt="">
               <div class="bentuk-info">
                 <p>Menyentuh, mengusap, meraba, memegang, memeluk, mencium atau menggosokkan bagian tubuh pada tubuh korban tanpa persetujuan.</p>
               </div>
@@ -181,40 +255,17 @@
     
           <div class="col-lg-4 col-md-6 bentuk-item">
             <div class="bentuk-wrap">
-              <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
+              <img src="assets/img/contoh/kirim-pesan.png" class="img-fluid" alt="">
               <div class="bentuk-info">
-                <h4>App 3</h4>
-                <p>App</p>
+                <p>Mengirimkan pesan dan konten bernuansa seksual kepada korban tanpa persetujuan.</p>
               </div>
             </div>
           </div>
-    
           <div class="col-lg-4 col-md-6 bentuk-item">
             <div class="bentuk-wrap">
-              <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
+              <img src="assets/img/contoh/Pelecehan.jpg" class="img-fluid" alt="">
               <div class="bentuk-info">
-                <h4>Card 1</h4>
-                <p>Card</p>
-              </div>
-            </div>
-          </div>
-    
-          <div class="col-lg-4 col-md-6 bentuk-item">
-            <div class="bentuk-wrap">
-              <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-              <div class="bentuk-info">
-                <h4>Card 3</h4>
-                <p>Card</p>
-              </div>
-            </div>
-          </div>
-    
-          <div class="col-lg-4 col-md-6 bentuk-item">
-            <div class="bentuk-wrap">
-              <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-              <div class="bentuk-info">
-                <h4>Web 3</h4>
-                <p>Web</p>
+                <p>Melakukan perkosaan termasuk penetrasi dengan benda atau bagian tubuh selain alat kelamin.</p>
               </div>
             </div>
           </div>
@@ -341,51 +392,59 @@
 
         <!-- ======= Contact Section ======= -->
         <section id="contact" class="contact">
-          <div class="container">
-    
-            <div class="section-title">
-              <h2>Hubungi Kami</h2>
-              <p>Jangan takut untuk melaporkan segala bentuk kekerasan seksual yang terjadi disekitarmu! Setiap laporan merupakan langkah penting menuju perlindungan bagi korban serta mencegah terjadinya kekerasan yang sama pada orang lain. Mari bersama kita memutus siklus kekerasan dan menciptakan lingkungan yang lebih aman bagi semua orang!</p>
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Hubungi Kami</h2>
+          <p>Jangan takut untuk melaporkan segala bentuk kekerasan seksual yang terjadi disekitarmu! Setiap laporan 
+            merupakan langkah penting menuju perlindungan bagi korban serta mencegah terjadinya kekerasan yang sama 
+            pada orang lain. Mari bersama kita memutus siklus kekerasan dan menciptakan lingkungan yang lebih aman bagi semua orang!</p>
+        </div>
+
+      </div>
+
+      <div class="container">
+
+        <div class="row mt-5">
+
+          <div class="col-lg-6">
+
+            <div class="row">
+            <img src="assets/img/contact.png" alt="">
             </div>
+
           </div>
-    
-          <div class="container">   
-            <div class="row mt-5"> 
-              <div class="col-lg-6">
-                <div class="row">
-                  <img src="assets/img/contact.png" alt="">
-                </div>  
+
+          <div class="col-lg-6">
+            <form action="#" method="POST" role="form" class="contact-form">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required="">
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required="">
+                </div>
               </div>
-    
-              <div class="col-lg-6">
-                <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-                  <div class="row">
-                    <div class="col-md-6 form-group">
-                      <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required="">
-                    </div>
-                    <div class="col-md-6 form-group mt-3 mt-md-0">
-                      <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required="">
-                    </div>
-                  </div>
-                  <div class="form-group mt-3">
-                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required="">
-                  </div>
-                  <div class="form-group mt-3">
-                    <textarea class="form-control" name="message" rows="7" placeholder="Message" required=""></textarea>
-                  </div>
-                  <div class="my-3">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Your message has been sent. Thank you!</div>
-                  </div>
-                  <div class="text-center"><button type="submit">Send Message</button></div>
-                </form>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required="">
               </div>
-    
-            </div>
-    
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="7" placeholder="Message" required=""></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit" name="Input">Send Message</button></div>
+            </form>
           </div>
-        </section><!-- End Contact Section -->
+
+        </div>
+
+      </div>
+    </section>
+    <!-- End Contact Section -->
 
   </main>
 
@@ -415,3 +474,22 @@
 </body>
 
 </html>
+
+<script>
+  // Ambil semua elemen dengan kelas "nav-link"
+  var navLinks = document.querySelectorAll('.nav-link');
+
+  // Loop melalui setiap tautan
+  navLinks.forEach(function(navLink) {
+    // Tambahkan event listener untuk menangani klik pada setiap tautan
+    navLink.addEventListener('click', function(event) {
+      // Hapus kelas "active" dari semua tautan
+      navLinks.forEach(function(link) {
+        link.classList.remove('active');
+      });
+
+      // Tambahkan kelas "active" ke tautan yang diklik
+      this.classList.add('active');
+    });
+  });
+</script>
