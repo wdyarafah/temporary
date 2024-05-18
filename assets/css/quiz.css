@@ -125,6 +125,33 @@ body {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.466);
 }
 
+.submit {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: right; 
+}
+
+.submit button {
+  padding: 15px 50px;
+  background-color: #9564DA;
+  color: white;
+  border: none;
+  border-radius: 50px; /* Untuk membuat rounded-border */
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  font-size: 16px;
+}
+
+.submit button:hover {
+  background-color: #522F65;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  font-size: 16px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.473);
+}
+
+
 /* Media Query for Tablets */
 @media (max-width: 2051px) {
   .options label {

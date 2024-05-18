@@ -12,9 +12,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result = $conn->query($sql);
 
         if ($result->num_rows == 1) {
-            // Set session
+            $row = $result->fetch_assoc();
             $_SESSION["loggedin"] = true;
-            // header("Location: index.php");
+            $_SESSION["user_id"] = $row['user_id']; // Set user_id session
             echo "<script language=\"javascript\">
               alert(\"Login berhasil, SELAMAT DATANG!!\");
               document.location=\"index.php\";
@@ -52,16 +52,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pencegahan dan Penanganan Kekerasan Seksual</title>
+    <title>Login | Kekerasan Seksual dan Dampaknya</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
-    <link rel="icon" href="assets/img/favicon.png">
+    <link rel="icon" href="assets/img/logo.png">
     <link rel="stylesheet" href="assets/css/login.css">
 </head>
 
@@ -70,11 +71,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="wrapper">
         <div class="title-text">
             <div class="title login">
-                <!-- <img src="assets/img/Logo.png"> <br> -->
+                <img src="assets/img/Logo.png"> <br>
                 Login
             </div>
             <div class="title signup">
-                <!-- <img src="assets/img/Logo.png"> <br> -->
+                <img src="assets/img/Logo.png"> <br>
                 Registrasi
             </div>
         </div>

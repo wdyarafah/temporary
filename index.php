@@ -7,7 +7,7 @@ if (isset($_GET["logout"]) && $_GET["logout"] == "true") {
     // Destroy the session
     session_destroy();
     // Redirect back to the index page after logout
-    header("location: index.php");
+    header("location: login.php");
     exit;
 }
 
@@ -46,7 +46,7 @@ if (isset($_POST['Input'])) {
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>TEMPORARY</title>
+  <title>Kekerasan Seksual dan Dampaknya</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -110,7 +110,7 @@ if (isset($_POST['Input'])) {
           <h2 data-aos="fade-up" data-aos-delay="100" class="">Mempelajari Kekerasan Seksual<br>dan Dampak Kekerasan Seksual</h2>
           <p data-aos="fade-up" data-aos-delay="200">Segera lapor bila melihat dan mendapat kekerasan seksual!</p>
           <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
-            <a href="quiz.html" class="btn-kuesioner">Kuesioner</a>
+            <a href="quiz.php" class="btn-kuesioner">Kuesioner</a>
           </div>
         </div>
     </section>
@@ -390,8 +390,73 @@ if (isset($_POST['Input'])) {
     </section>
     <!-- End Dampak Section -->
 
+    <!-- ======= Our Team Section ======= -->
+    <section id="team" class="team">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Tim Kami</h2>
+          <p>Mereka adalah orang-orang di balik terbentuknya website ini :</p>
+        </div>
+
+        <div class="row gy-4">
+
+          <div class="col-xl-2 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+            <div class="member">
+              <img src="assets/img/member/Pramudya.png" class="img-fluid" alt="">
+              <h4>Pramudya Kusuma</h4>
+              <span>Leader Project</span>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-xl-2 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="member">
+              <img src="assets/img/member/Citra.png" class="img-fluid" alt="">
+              <h4>Citra Sekarputri Mayshara</h4>
+              <span>Data Analyst</span>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-xl-2 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="member">
+              <img src="assets/img/member/Dylan.png" class="img-fluid" alt="">
+              <h4>Dylan Pria Putra Nadi</h4>
+              <span>Web Analyst</span>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-xl-2 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+            <div class="member">
+              <img src="assets/img/member/Arfan.png" class="img-fluid" alt="">
+              <h4>Muhamad <br> Arfan</h4>
+              <span>Web Disigner</span>
+            </div>
+          </div><!-- End Team Member -->
+          
+          <div class="col-xl-2 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+            <div class="member">
+              <img src="assets/img/member/Widya.png" class="img-fluid" alt="">
+              <h4>Widyashari Nur Arafah</h4>
+              <span>Web Programmer</span>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-xl-2 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+            <div class="member">
+              <img src="assets/img/member/Radit.png" class="img-fluid" alt="">
+              <h4>M. Radithya Maheswara</h4>
+              <span>Web Programmer</span>
+            </div>
+          </div><!-- End Team Member -->
+
+        </div>
+
+      </div>
+    </section>
+    <!-- End Our Team Section -->
+
         <!-- ======= Contact Section ======= -->
-        <section id="contact" class="contact">
+    <section id="contact" class="contact">
       <div class="container">
 
         <div class="section-title">
@@ -460,13 +525,11 @@ if (isset($_POST['Input'])) {
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
